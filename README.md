@@ -99,6 +99,8 @@ make build
 make project
 ```
 
+4. asciinema с демонстрацией игрового процесса:
+[![asciicast](https://asciinema.org/a/O70UxPg71zHeS1wb4MO6mml5o.svg)](https://asciinema.org/a/O70UxPg71zHeS1wb4MO6mml5o)
 
 ### Контактная информация
 * **Автор**: Румянцев
