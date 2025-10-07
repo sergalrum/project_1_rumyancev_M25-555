@@ -17,7 +17,7 @@
 
 1. Клонирование репозитория:
 ```bash
-git clone <ссылка_на_репозиторий>
+git clone git@github.com:sergalrum/project_1_rumyancev_M25-555.git
 cd project_1_rumyancev_m25_555
 ```
 
