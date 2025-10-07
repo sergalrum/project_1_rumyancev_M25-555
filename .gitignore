@@ -1,11 +1,24 @@
-# Игнорируем виртуальное окружение
-.venv/
-
-# Игнорируем директорию с дистрибутивами
-dist/
-
-# Дополнительно можно добавить:
+# Python cache
 __pycache__/
+*.py[cod]
 *.pyc
 *.pyo
 *.pyd
+
+# Poetry
+.venv/
+.python-version
+
+# Distributions
+dist/
+*.egg-info/
+build/
+
+# IDE
+.idea/
+*.iml
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
