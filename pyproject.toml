@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "project-1-rumyancev-m25-555"
 version = "0.1.0"
-description = ""
+description = "Текстовая приключенческая игра 'Лабиринт сокровищ'"
 authors = ["Sergey Rumyancev <133sergey@gmail.com>"]
 readme = "README.md"
 packages = [
