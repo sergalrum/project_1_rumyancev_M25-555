@@ -18,6 +18,6 @@ publish:
 package-install:
 	python3 -m pip install dist/*.whl
 
-# Активация виртуального окружения
-activate:
-	poetry shell
+# Проверка качества кода
+lint:
+	poetry run ruff check .
