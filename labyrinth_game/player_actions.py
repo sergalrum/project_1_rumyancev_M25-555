@@ -1,8 +1,8 @@
 # labyrinth_game/player_actions.py
 
 
-from . import constants
-from . import utils
+from . import constants, utils
+
 #import re
 #import random
 #import json
@@ -92,19 +92,22 @@ def examine_item(game_state, item_name):
             case 'bronze_box':
                 print("Маленькая бронзовая шкатулка с замысловатым замком.")
             case _:
-                print("Вы внимательно осматриваете предмет, но не находите ничего примечательного.")
+                print("Вы внимательно осматриваете предмет, \
+                      но не находите ничего примечательного.")
     else:
         print("У вас нет такого предмета в инвентаре.")
 
 def combine_items(game_state, item1, item2):
     """Комбинирует два предмета из инвентаря."""
-    if item1 not in game_state['player_inventory'] or item2 not in game_state['player_inventory']:
+    if item1 not in game_state['player_inventory'] \
+            or item2 not in game_state['player_inventory']:
         print("У вас нет одного или обоих предметов.")
         return
     
     # Пример комбинации предметов
     if item1 == 'torch' and item2 == 'bronze_box':
-        print("Вы соединяете факел с бронзовой шкатулкой, создавая магический светильник!")
+        print("Вы соединяете факел с бронзовой шкатулкой, \
+              создавая магический светильник!")
         game_state['player_inventory'].remove(item1)
         game_state['player_inventory'].remove(item2)
         game_state['player_inventory'].append('magic_lantern')
@@ -124,7 +127,8 @@ def move_player(game_state, direction):
         # Проверка на комнату сокровищ
         if next_room == 'treasure_room':
             if 'rusty_key' in game_state['player_inventory']:
-                print("Вы используете найденный ключ, чтобы открыть путь в комнату сокровищ.")
+                print("Вы используете найденный ключ, \
+                      чтобы открыть путь в комнату сокровищ.")
                 game_state['current_room'] = next_room
                 game_state['steps_taken'] += 1
                 utils.describe_current_room(game_state)
@@ -171,7 +175,8 @@ def solve_puzzle(game_state):
     
     # Обработка альтернативных ответов
     if (user_answer.lower() == answer.lower() or 
-        (answer.isdigit() and user_answer.lower() in ['один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять'])):
+        (answer.isdigit() and user_answer.lower() in ['один', 'два', 'три', \
+                'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять'])):
         print("Правильно! Вы решили загадку!")
         room['puzzle'] = None  # Загадка решена, удаляем её
         
@@ -296,7 +301,8 @@ def process_command(COMMANDS, game_state, command):
         match action:
             case 'go' | 'north' | 'south' | 'east' | 'west':
                 # Обработка односложных команд движения
-                direction = action if action in ['north', 'south', 'east', 'west'] else args[0]
+                direction = action if action \
+                    in ['north', 'south', 'east', 'west'] else args[0]
                 move_player(game_state, direction)
                 
             case 'solve':
@@ -444,7 +450,8 @@ def check_game_conditions(game_state):
         return
     
     # Проверка времени
-    if game_state.get('time_limit') and game_state['steps_taken'] >= game_state['time_limit']:
+    if game_state.get('time_limit') \
+        and game_state['steps_taken'] >= game_state['time_limit']:
         print("\nВремя вышло! Игра окончена.")
         game_state['game_over'] = True
         return
@@ -536,7 +543,15 @@ def check_status(game_state):
     print("\nСтатус игрока:")
     print(f"Шаги: {game_state['steps_taken']}")
     print(f"Текущая комната: {game_state['current_room']}")
-    print(f"Инвентарь: {', '.join(game_state['player_inventory']) if game_state['player_inventory'] else 'Пусто'}")
+    #print(f"Инвентарь: {', '.join(game_state['player_inventory']) 
+    # if game_state['player_inventory'] else 'Пусто'}")
+    # если нижняя часть не работает, верхнюю надо соединить, но она длинная для ruff
+    inventory_content = (
+        ', '.join(game_state['player_inventory'])
+        if game_state['player_inventory']
+        else 'Пусто'
+    )
+    print(f"Инвентарь: {inventory_content}")
 
 #def handle_special_events(game_state):
 #    """Обрабатывает специальные игровые события."""

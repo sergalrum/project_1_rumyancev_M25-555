@@ -1,11 +1,11 @@
 # labyrinth_game/utils.py
 
-from . import constants
-from . import player_actions
+import math
+
+from . import constants, player_actions
 
 #import json
 # import random
-import math
 
 def describe_current_room(game_state):
     """Описывает текущую комнату игроку."""
@@ -147,7 +147,8 @@ def trigger_trap(game_state):
     print("Ловушка активирована! Пол стал дрожать...")
     
     if game_state['player_inventory']:
-        index = pseudo_random(game_state['steps_taken'], len(game_state['player_inventory']))
+        index = pseudo_random(game_state['steps_taken'],
+                              len(game_state['player_inventory']))
         lost_item = game_state['player_inventory'].pop(index)
         print(f"Вы потеряли предмет: {lost_item}!")
     else:

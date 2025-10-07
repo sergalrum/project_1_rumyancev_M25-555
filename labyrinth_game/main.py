@@ -1,9 +1,9 @@
 # main.py
 
-from . import utils
-from . import player_actions
-from . import constants
 import sys
+
+from . import constants, player_actions, utils
+
 
 def main():
     # Инициализация игрового состояния
